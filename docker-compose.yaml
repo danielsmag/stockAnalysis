@@ -9,5 +9,11 @@ services:
     volumes:
       - redis-data:/data
 
+  dataProducer:
+    build:
+      context: ./dataProducer
+      dockerfile: Dockerfile
+    container_name: dataProducer
+
 volumes:
   redis-data:
