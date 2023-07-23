@@ -109,6 +109,11 @@ import websockets
 import json
 from typing import List
 from os import environ
+import redis
+from os import environ
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Asset:
 
@@ -153,7 +158,8 @@ class PriceProducer:
         "__key",
         "symbols",
         "assets_objects",
-        "queue"
+        "queue",
+        "redis_client"
     ]
 
     def __init__(self, symbols: List[str] = []) -> None:
@@ -163,6 +169,11 @@ class PriceProducer:
         self.symbols: List[str] = symbols
         self.assets_objects: dict = {}
         self.queue: Queue = Queue()
+        self.redis_client = redis.Redis(host='redis', port=6379, db=0,password=environ.get('REDIS_PASSWORD'))
+        if not self.redis_client.exists('add_tickers'):
+            self.redis_client.lpush('add_tickers','')
+            print('add tickers key created in redis')
+
 
     async def start(self) -> None:
         assets: list[str] = [x.upper() for x in self.symbols]
@@ -173,7 +184,7 @@ class PriceProducer:
         await consumer_task
 
     async def producer_handler(self)-> None:
-        async with websockets.connect(f"wss://ws.finnhub.io?token=cit981pr01qu27mnra5gcit981pr01qu27mnra60") as websocket:
+        async with websockets.connect(f"wss://ws.finnhub.io?token={self.__key}") as websocket:
             for asset in self.symbols:
                 await websocket.send(json.dumps({"type": "subscribe", "symbol": asset}))
             while True:
@@ -191,11 +202,8 @@ class PriceProducer:
         asset: Asset = self.assets_objects[message['s']]
         await asset.extract(new_values=message['data'])
 
-    async def stop(self) -> None:
-        if self.websocket is not None:
-            await self.websocket.close()
-
 
 if __name__ == "__main__":
+    print('run data producer')
     obj = PriceProducer(symbols=['MSFT', 'APPLE'])
     run(obj.start())
