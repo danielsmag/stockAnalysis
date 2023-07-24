@@ -16,6 +16,6 @@ RUN chmod +x finnhub/priceProducer.py
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# EXPOSE 8000
+EXPOSE 8001
 
 CMD ["python","finnhub/priceProducer.py"]
