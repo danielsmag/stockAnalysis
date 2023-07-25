@@ -80,6 +80,8 @@ services:
   redis:
     image: redis:latest
     #add time zone
+    ports:
+      - "6379:6379"
     environment:
       TZ: Asia/Jerusalem
     expose:
@@ -329,9 +331,10 @@ services:
     container_name: dataProducer
     env_file: .env
     volumes:
-      - ./dataProducer/finnhub:/finnhub
-      - ./dataProducer/google-trends:/google-trends
-    network_mode: "host"
+      - ./dataProducer/finnhub:/app/finnhub
+      - ./dataProducer/google-trends:/app/google-trends
+    # network_mode: "host"
+    #
     depends_on:
       - zookeeper
       - kafka

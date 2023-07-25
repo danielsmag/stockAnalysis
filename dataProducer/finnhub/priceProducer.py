@@ -3,6 +3,7 @@ import websockets
 import json
 from typing import List
 from os import environ
+import redis
 
 class Asset:
 
@@ -48,7 +49,8 @@ class PriceProducer:
         "start",
         "assets_objects",
         "ws",
-        "task"
+        "task",
+        "r"
     ]
 
     def __init__(self,symbols: List[str]=[]) -> None:
@@ -61,6 +63,8 @@ class PriceProducer:
 
 
     async def run(self) -> None:
+        self.r = redis.Redis(host='redis', port=6379, decode_responses=True)
+        self.r.lpush('ticker_to_add','')
         self.start = True
         assets: list[str] = [x.upper() for x in self.symbols]
         for asset in assets:

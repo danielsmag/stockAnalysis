@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8001
 
 
-# CMD ["python","finnhub/priceProducer.py"]
+CMD ["python","finnhub/priceProducer.py"]
