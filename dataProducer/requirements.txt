@@ -1,4 +1,5 @@
 websockets
 redis
 python-dotenv
-websocket-client
+pytrends
+pandas
