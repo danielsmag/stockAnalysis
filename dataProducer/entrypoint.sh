@@ -1,7 +1,8 @@
 #!/bin/sh
+sleep 30
+python /app/finnhub/priceProducer.py &
 
-# Run script1.py in the background
-python /app/script1.py &
+python /app/google-trends/temp.py
 
-# Run script2.py in the background
-python /app/script2.py &
+
+

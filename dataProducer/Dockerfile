@@ -16,5 +16,4 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 EXPOSE 8001
 
-
-CMD ["python","finnhub/priceProducer.py"]
+CMD ["/bin/sh","entrypoint.sh"]

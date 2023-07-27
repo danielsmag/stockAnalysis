@@ -3,3 +3,5 @@ redis
 python-dotenv
 pytrends
 pandas
+confluent-kafka
+avro-python3
