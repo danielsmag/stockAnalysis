@@ -766,3 +766,69 @@ Traceback (most recent call last):
 airflow.exceptions.AirflowException: `python_callable` param must be callable
 [2023-07-27T09:33:20.375+0300] {processor.py:811} WARNING - No viable dags retrieved from /opt/airflow/dags/google_trends_dag.py
 [2023-07-27T09:33:20.401+0300] {processor.py:178} INFO - Processing /opt/airflow/dags/google_trends_dag.py took 0.050 seconds
+[2023-07-27T12:39:59.387+0300] {processor.py:156} INFO - Started process (PID=26) to work on /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:39:59.389+0300] {processor.py:799} INFO - Processing file /opt/airflow/dags/google_trends_dag.py for tasks to queue
+[2023-07-27T12:39:59.389+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:39:59.389+0300] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:39:59.423+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:39:59.420+0300] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/google_trends_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/opt/airflow/dags/google_trends_dag.py", line 74, in <module>
+    dag_creator = GooogleTrendsMonthly()
+  File "/opt/airflow/dags/google_trends_dag.py", line 41, in __init__
+    self.dag:DAG = self.create_dag()
+  File "/opt/airflow/dags/google_trends_dag.py", line 54, in create_dag
+    update_monthly: PythonOperator = PythonOperator(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 429, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 168, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2023-07-27T12:39:59.423+0300] {processor.py:811} WARNING - No viable dags retrieved from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:39:59.458+0300] {processor.py:178} INFO - Processing /opt/airflow/dags/google_trends_dag.py took 0.077 seconds
+[2023-07-27T12:40:29.617+0300] {processor.py:156} INFO - Started process (PID=34) to work on /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:29.618+0300] {processor.py:799} INFO - Processing file /opt/airflow/dags/google_trends_dag.py for tasks to queue
+[2023-07-27T12:40:29.619+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:40:29.619+0300] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:29.647+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:40:29.645+0300] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/google_trends_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/opt/airflow/dags/google_trends_dag.py", line 74, in <module>
+    dag_creator = GooogleTrendsMonthly()
+  File "/opt/airflow/dags/google_trends_dag.py", line 41, in __init__
+    self.dag:DAG = self.create_dag()
+  File "/opt/airflow/dags/google_trends_dag.py", line 54, in create_dag
+    update_monthly: PythonOperator = PythonOperator(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 429, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 168, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2023-07-27T12:40:29.647+0300] {processor.py:811} WARNING - No viable dags retrieved from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:29.683+0300] {processor.py:178} INFO - Processing /opt/airflow/dags/google_trends_dag.py took 0.071 seconds
+[2023-07-27T12:40:59.801+0300] {processor.py:156} INFO - Started process (PID=42) to work on /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:59.802+0300] {processor.py:799} INFO - Processing file /opt/airflow/dags/google_trends_dag.py for tasks to queue
+[2023-07-27T12:40:59.802+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:40:59.802+0300] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:59.821+0300] {logging_mixin.py:149} INFO - [2023-07-27T12:40:59.819+0300] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/google_trends_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/opt/airflow/dags/google_trends_dag.py", line 74, in <module>
+    dag_creator = GooogleTrendsMonthly()
+  File "/opt/airflow/dags/google_trends_dag.py", line 41, in __init__
+    self.dag:DAG = self.create_dag()
+  File "/opt/airflow/dags/google_trends_dag.py", line 54, in create_dag
+    update_monthly: PythonOperator = PythonOperator(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 429, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 168, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2023-07-27T12:40:59.822+0300] {processor.py:811} WARNING - No viable dags retrieved from /opt/airflow/dags/google_trends_dag.py
+[2023-07-27T12:40:59.854+0300] {processor.py:178} INFO - Processing /opt/airflow/dags/google_trends_dag.py took 0.057 seconds

@@ -565,3 +565,305 @@ File Path                               PID    Runtime      # DAGs    # Errors  
 /opt/airflow/dags/google_trends_dag.py                           0           1  0.07s           2023-07-27T06:33:20
 ================================================================================
 [2023-07-27T09:33:31.388+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-27T12:39:59.298+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-27T12:39:59.299+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-27T12:39:59.300+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-27T12:39:59.300+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-27T12:39:59.303+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-27T12:39:59.421+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     26  0.05s             0           0
+================================================================================
+[2023-07-27T12:40:29.602+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     34  0.01s             0           1  0.10s           2023-07-27T09:39:59
+================================================================================
+[2023-07-27T12:40:59.795+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     42  0.00s             0           1  0.09s           2023-07-27T09:40:29
+================================================================================
+[2023-07-27T12:41:06.461+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-28T10:48:17.099+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-28T10:48:17.101+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-28T10:48:17.101+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-28T10:48:17.102+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T10:48:17.105+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T10:48:17.199+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     27  0.04s             0           0
+================================================================================
+[2023-07-28T10:48:47.356+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     35  0.00s             0           1  0.09s           2023-07-28T07:48:17
+================================================================================
+[2023-07-28T10:49:17.511+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     43  0.01s             0           1  0.06s           2023-07-28T07:48:47
+================================================================================
+[2023-07-28T10:49:47.673+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     51  0.00s             0           1  0.07s           2023-07-28T07:49:17
+================================================================================
+[2023-07-28T10:50:17.845+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     59  0.00s             0           1  0.06s           2023-07-28T07:49:47
+================================================================================
+[2023-07-28T10:50:48.003+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     67  0.00s             0           1  0.06s           2023-07-28T07:50:17
+================================================================================
+[2023-07-28T10:50:54.499+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-28T10:52:08.116+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-28T10:52:08.120+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-28T10:52:08.121+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-28T10:52:08.121+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T10:52:08.123+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T10:52:08.209+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     28  0.04s             0           0
+================================================================================
+[2023-07-28T10:52:38.381+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     37  0.01s             0           1  0.06s           2023-07-28T07:52:08
+================================================================================
+[2023-07-28T10:53:08.560+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     45  0.01s             0           1  0.06s           2023-07-28T07:52:38
+================================================================================
+[2023-07-28T10:53:19.268+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-28T10:54:18.085+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-28T10:54:18.086+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-28T10:54:18.086+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-28T10:54:18.087+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T10:54:18.089+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T10:54:18.196+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     27  0.06s             0           0
+================================================================================
+[2023-07-28T10:54:48.363+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     35  0.01s             0           1  0.10s           2023-07-28T07:54:18
+================================================================================
+[2023-07-28T10:55:18.542+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     43  0.01s             0           1  0.07s           2023-07-28T07:54:48
+================================================================================
+[2023-07-28T10:55:48.709+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     51  0.00s             0           1  0.06s           2023-07-28T07:55:18
+================================================================================
+[2023-07-28T10:56:18.871+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     59  0.01s             0           1  0.05s           2023-07-28T07:55:48
+================================================================================
+[2023-07-28T10:56:49.035+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     67  0.00s             0           1  0.06s           2023-07-28T07:56:18
+================================================================================
+[2023-07-28T10:57:19.217+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     75  0.01s             0           1  0.06s           2023-07-28T07:56:49
+================================================================================
+[2023-07-28T10:57:49.404+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     83  0.01s             0           1  0.09s           2023-07-28T07:57:19
+================================================================================
+[2023-07-28T10:58:19.576+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     91  0.00s             0           1  0.06s           2023-07-28T07:57:49
+================================================================================
+[2023-07-28T10:58:49.749+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py    100  0.01s             0           1  0.06s           2023-07-28T07:58:19
+================================================================================
+[2023-07-28T10:59:18.892+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T10:59:18.894+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T10:59:19.924+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py    108  0.01s             0           1  0.06s           2023-07-28T07:58:49
+================================================================================
+[2023-07-28T10:59:50.093+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py    116  0.01s             0           1  0.06s           2023-07-28T07:59:19
+================================================================================
+[2023-07-28T11:00:15.419+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-28T11:01:26.596+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-28T11:01:26.599+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-28T11:01:26.599+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-28T11:01:26.599+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T11:01:26.601+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T11:01:26.681+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     27  0.04s             0           0
+================================================================================
+[2023-07-28T11:01:56.840+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     35  0.00s             0           1  0.07s           2023-07-28T08:01:26
+================================================================================
+[2023-07-28T11:02:26.991+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     43  0.00s             0           1  0.06s           2023-07-28T08:01:56
+================================================================================
+[2023-07-28T11:02:57.173+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     51  0.00s             0           1  0.07s           2023-07-28T08:02:27
+================================================================================
+[2023-07-28T11:03:27.339+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     59  0.00s             0           1  0.06s           2023-07-28T08:02:57
+================================================================================
+[2023-07-28T11:03:35.365+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15
+[2023-07-28T11:05:08.161+0300] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-07-28T11:05:08.162+0300] {manager.py:488} INFO - Process each file at most once every 30 seconds
+[2023-07-28T11:05:08.162+0300] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-07-28T11:05:08.163+0300] {manager.py:758} INFO - Searching for files in /opt/airflow/dags
+[2023-07-28T11:05:08.165+0300] {manager.py:761} INFO - There are 1 files in /opt/airflow/dags
+[2023-07-28T11:05:08.251+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/google_trends_dag.py     27  0.04s             0           0
+================================================================================
+[2023-07-28T11:05:38.396+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     35  0.00s             0           1  0.08s           2023-07-28T08:05:08
+================================================================================
+[2023-07-28T11:06:08.550+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     43  0.00s             0           1  0.05s           2023-07-28T08:05:38
+================================================================================
+[2023-07-28T11:06:38.714+0300] {manager.py:889} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/google_trends_dag.py     51  0.00s             0           1  0.06s           2023-07-28T08:06:08
+================================================================================
+[2023-07-28T11:06:40.902+0300] {manager.py:470} INFO - Exiting gracefully upon receiving signal 15

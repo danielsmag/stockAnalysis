@@ -52,6 +52,7 @@ x-airflow-common:
     - ./airflow/configs:/opt/airflow/configs
     - ./airflow/airflow.cfg:/opt/airflow/airflow.cfg
     - ./airflow/logs/scheduler:/opt/airflow/logs/scheduler
+    - ./generalObjects:/opt/airflow/generalObjects
 
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on: &airflow-common-depends-on
@@ -328,6 +329,7 @@ services:
     volumes:
       - ./dataProducer/finnhub:/app/finnhub
       - ./dataProducer/google-trends:/app/google-trends
+      - ./generalObjects:/app/generalObjects
     # network_mode: "host"
     #
     depends_on:
@@ -376,6 +378,19 @@ services:
     #   # redis-data:
     #   # zookeeper_data:
     #   # kafka_data:
+
+  front-app:
+    build:
+      context: ./front-app
+      dockerfile: Dockerfile
+    container_name: front-flask-app
+    ports:
+      - "7000:7000"
+    env_file: .env
+    volumes:
+      - ./front-app:/app
+    # depends_on:
+
 
 volumes:
   postgres-db-volume:
