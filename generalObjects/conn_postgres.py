@@ -9,7 +9,7 @@ from numpy import nan
 from typing import Dict,List,Union
 
 
-class Connect_Sql:
+class ConnPostgres:
 
     __slots__: List[str] = [
         "dialect",

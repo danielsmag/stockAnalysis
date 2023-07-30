@@ -380,6 +380,19 @@ services:
       - ./front-app:/app
       - ./generalObjects:/app/generalObjects
     # depends_on:
+
+  backend-app:
+    build:
+      context: ./backend-app
+      dockerfile: Dockerfile
+    container_name: backend-app
+    ports:
+      - "6000:6000"
+    env_file: .env
+    volumes:
+      - ./backend-app:/app
+      - ./generalObjects:/app/generalObjects
+
   pgadmin:
     image: dpage/pgadmin4:6.21
     container_name: pgadmin

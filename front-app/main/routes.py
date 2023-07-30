@@ -3,6 +3,7 @@ from flask import render_template,redirect,url_for,flash,request,jsonify
 from main.models import Item,User
 from main.forms import RegisterForm
 from main import db
+from generalObjects.conn_postgres import ConnPostgres
 
 @app.route('/')
 @app.route('/home')
@@ -11,6 +12,7 @@ def home_page():
 
 @app.route('/market')
 def setting_page():
+
     items = [
         {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
         {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
