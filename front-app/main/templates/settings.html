@@ -4,31 +4,187 @@ Settings
 {% endblock %}
 
 {% block content %}
-<table class="table table-hover table-dark">
-    <thead>
-        <tr>
-            <!-- Your Columns HERE -->
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Barcode</th>
-            <th scope="col">Price</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Your rows inside the table HERE: -->
-        {% for item in items %}
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.barcode }}</td>
-            <td>{{ item.price }}$</td>
-            <td>
-                <button class="btn btn-outline btn-info">More Info</button>
-                <button class="btn btn-outline btn-success">Purchase this Item</button>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .table thead th {
+        color: #faf9f9;
+    }
+
+    .scrollable-box {
+        height: 100px;
+        /* adjust as needed */
+        width: 100%;
+        /* adjust as needed */
+        overflow-y: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .scrollable-box table {
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+        color: #faf9f9;
+
+    }
+
+    .table tr {
+        line-height: 0.5;
+
+    }
+</style>
+
+<body>
+    <h6>Setup kw_list for google trends</h6>
+    <div class="container">
+        <div class="card bg-dark text-light">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>KW - Google trends</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="scrollable-box">
+                    <table class="table table-dark" style="margin-left: 0; margin-right: auto;">
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td>{{ row['name'] }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-info delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <br>
+                <h5>Add a new row:</h5>
+                <form id="add-row-form" class="form-inline mb-3">
+                    <label for="name" class="mr-2">kw:</label>
+                    <input type="text" id="name" name="name" class="form-control form-control-sm mr-2">
+                    <input type="button" value="Save" id="save-btn" class="btn btn-primary btn-sm mr-2">
+                    <input type="button" value="Add Row" id="add-row-btn" class="btn btn-primary btn-sm">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!--
+<body>
+    <h6>setup kw_list for google trends</h6>
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>kw</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="scrollable-box">
+            <table class="table table-dark" style="margin-left: 0; margin-right: auto;">
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row['name'] }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-info delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <h5>Add a new row:</h5>
+        <form id="add-row-form" class="form-inline mb-3">
+            <label for="name" class="mr-2">kw:</label>
+            <input type="text" id="name" name="name" class="form-control form-control-sm mr-2">
+            <input type="button" value="Save" id="save-btn" class="btn btn-primary btn-sm mr-2">
+            <input type="button" value="Add Row" id="add-row-btn" class="btn btn-primary btn-sm">
+        </form>
+        <!-- The rest of your table goes here -->
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#add-row-btn').click(function (event) {
+            // Get input values
+            var name = $('#name').val();
+            var age = $('#age').val();
+            var city = $('#city').val();
+
+            // Add a new row to the table
+            $('table tbody').append(
+                '<tr><td>' + name + '</td><td>' + age + '</td><td>' + city + '</td><td><button class="btn btn-outline-info delete-btn">Delete</button></td></tr>'
+            );
+
+            // Clear input fields
+            $('#name').val('');
+            $('#age').val('');
+            $('#city').val('');
+        });
+
+        // Delete row function
+        $(document).on('click', '.delete-btn', function () {
+            $(this).parents('tr').remove();
+        });
+    });
+
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $('#save-btn').click(function () {
+                let tableData = [];
+                $('table tbody tr').each(function () {
+                    let row = {};
+                    $(this).find('td').each(function (index) {
+                        switch (index) {
+                            case 0: row['name'] = $(this).text(); break;
+                            case 1: row['age'] = $(this).text(); break;
+                            case 2: row['city'] = $(this).text(); break;
+                        }
+                    });
+                    tableData.push(row);
+                });
+
+                $.ajax({
+                    url: '/update_table',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(tableData),
+                    beforeSend: function () {
+                        // Show a pop-up before the request is sent
+                        alert('Saving...');
+                    },
+                    success: function (response) {
+                        // You can also show a pop-up after the request has been successfully completed
+                        alert('Saved successfully');
+                    },
+                    error: function () {
+                        // If something went wrong, show a pop-up
+                        alert('An error occurred while saving');
+                    }
+                });
+            });
+        });
+    });
+
+</script>
+
+</body>
 {% endblock %}

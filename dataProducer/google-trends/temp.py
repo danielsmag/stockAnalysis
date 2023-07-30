@@ -20,7 +20,7 @@ while True:
         break
 
     if msg is None:
-        print('msg is None')
+        # print('msg is None')
         continue
     if msg.error():
         print("Consumer error: {}".format(msg.error()))
