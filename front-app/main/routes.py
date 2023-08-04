@@ -4,28 +4,50 @@ from main.models import Item,User
 from main.forms import RegisterForm
 from main import db
 from generalObjects.conn_postgres import ConnPostgres
+import requests,json
+
 
 @app.route('/')
 @app.route('/home')
 def home_page():
-    return render_template('home.html')
-
-@app.route('/market')
-def setting_page():
-
-    items = [
-        {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
-        {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
-        {'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150}
-    ]
     data = [
-        {'name': 'John', 'age': 30, 'city': 'New York'},
-        {'name': 'Jane', 'age': 28, 'city': 'Los Angeles'},
-        {'name': 'Jane', 'age': 28, 'city': 'Los Angeles'},
-        {'name': 'Jane', 'age': 28, 'city': 'Los Angeles'}
-        # Add as many dictionaries as you need
+        {'name': 'Apple', 'category': 'Fruit'},
+        {'name': 'Carrot', 'category': 'Vegetable'},
+        {'name': 'Orange', 'category': 'Fruit'},
+        {'name': 'Potato', 'category': 'Vegetable'},
+        {'name': 'Potato', 'category': 'Vegetable'},
+        {'name': 'Potato', 'category': 'Vegetable'},
+        {'name': 'Potato', 'category': 'Vegetable'},
+        {'name': 'Potato', 'category': 'Vegetable'},
+        {'name': 'Potato', 'category': 'Vegetable'},
     ]
-    return render_template('settings.html', data=data,items=items)
+    # filter_category = request.args.get('filter_category', '')
+    # if filter_category:
+    #     data = [item for item in data if item['category'] == filter_category]
+    return render_template('home.html', data=data)
+
+
+@app.route('/settings')
+def setting_page():
+    url = "http://130.185.119.119:6000/googleTrends/kw/list"
+    payload={}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    if response.status_code == 200:
+        try:
+            data = response.json()
+            print(data)
+        except ValueError:
+            print(response.text)
+    else:
+        print(f"Request failed with status code {response.status_code}")
+        print(response.text)
+        data =  {'kw': None}
+    # data = [
+    #     {'kw': 'stock'}
+
+
+    return render_template('settings.html', data=data)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -47,7 +69,28 @@ def register_page():
 @app.route('/update_table', methods=['POST'])
 def update_table():
     data = request.get_json()  # get the data from the request
-    # Your code to update the table with the data goes here.
-    # The data is in the form of a list of dictionaries, each with keys 'name', 'age', and 'city'
-    print(data)
+    url: str = "http://130.185.119.119:6000/googleTrends/kw/list"
+    result = {"kw": [d["kw"] for d in data]}
+    payload = json.dumps(result)
+    print(payload)
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    response = requests.request(method="POST", url=url, headers=headers, data=payload)
+    print(response.text)
     return jsonify({'status': 'success'})
+
+
+@app.route('/update_goole_trends', methods=['POST'])
+def update_goole_trends():
+    url: str = "http://130.185.119.119:6000/googleTrends/update-all"
+
+    payload = {}
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    response = requests.request(method="POST", url=url, headers=headers, data=payload)
+    print(response.text)
+    return jsonify({'status': 'success'}), 200

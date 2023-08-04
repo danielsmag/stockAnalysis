@@ -40,8 +40,13 @@ Settings
 </style>
 
 <body>
+    <div class="mt-2 mb-3 d-flex justify-content-end" style="position: fixed; right: 20px;">
+        <button id="update-all" class="btn btn-success mr-2">Update All</button>
+        <button id="update_google_trends" class="btn btn-success">Update Google Trends</button>
+    </div>
     <h6>Setup kw_list for google trends</h6>
     <div class="container">
+
         <div class="card bg-dark text-light">
             <div class="card-body">
                 <table class="table table-striped">
@@ -54,9 +59,9 @@ Settings
                 <div class="scrollable-box">
                     <table class="table table-dark" style="margin-left: 0; margin-right: auto;">
                         <tbody>
-                            {% for row in data %}
+                            {% for k in data['kw'] %}
                             <tr>
-                                <td>{{ row['name'] }}</td>
+                                <td>{{ k }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-info delete-btn">Delete</button>
                                 </td>
@@ -67,10 +72,10 @@ Settings
                 </div>
                 <br>
                 <br>
-                <h5>Add a new row:</h5>
+                <h6>Add a new row:</h6>
                 <form id="add-row-form" class="form-inline mb-3">
-                    <label for="name" class="mr-2">kw:</label>
-                    <input type="text" id="name" name="name" class="form-control form-control-sm mr-2">
+                    <label for="kw" class="mr-2">kw:</label>
+                    <input type="text" id="kw" name="kw" class="form-control form-control-sm mr-2">
                     <input type="button" value="Save" id="save-btn" class="btn btn-primary btn-sm mr-2">
                     <input type="button" value="Add Row" id="add-row-btn" class="btn btn-primary btn-sm">
                 </form>
@@ -81,63 +86,21 @@ Settings
 </body>
 
 
-<!--
-<body>
-    <h6>setup kw_list for google trends</h6>
-    <div class="container">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>kw</th>
-                </tr>
-            </thead>
-        </table>
-        <div class="scrollable-box">
-            <table class="table table-dark" style="margin-left: 0; margin-right: auto;">
-                <tbody>
-                    {% for row in data %}
-                    <tr>
-                        <td>{{ row['name'] }}</td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-info delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="container">
-        <h5>Add a new row:</h5>
-        <form id="add-row-form" class="form-inline mb-3">
-            <label for="name" class="mr-2">kw:</label>
-            <input type="text" id="name" name="name" class="form-control form-control-sm mr-2">
-            <input type="button" value="Save" id="save-btn" class="btn btn-primary btn-sm mr-2">
-            <input type="button" value="Add Row" id="add-row-btn" class="btn btn-primary btn-sm">
-        </form>
-        <!-- The rest of your table goes here -->
-
-
-
 <script>
     $(document).ready(function () {
         $('#add-row-btn').click(function (event) {
             // Get input values
-            var name = $('#name').val();
-            var age = $('#age').val();
-            var city = $('#city').val();
+            var kw = $('#kw').val();
+
 
             // Add a new row to the table
             $('table tbody').append(
-                '<tr><td>' + name + '</td><td>' + age + '</td><td>' + city + '</td><td><button class="btn btn-outline-info delete-btn">Delete</button></td></tr>'
+                '<tr><td>' + kw + '</td><td><button class="btn btn-sm btn-outline-info delete-btn">Delete</button></td></tr>'
             );
 
             // Clear input fields
-            $('#name').val('');
-            $('#age').val('');
-            $('#city').val('');
+            $('#kw').val('');
+
         });
 
         // Delete row function
@@ -154,9 +117,8 @@ Settings
                     let row = {};
                     $(this).find('td').each(function (index) {
                         switch (index) {
-                            case 0: row['name'] = $(this).text(); break;
-                            case 1: row['age'] = $(this).text(); break;
-                            case 2: row['city'] = $(this).text(); break;
+                            case 0: row['kw'] = $(this).text(); break;
+
                         }
                     });
                     tableData.push(row);
@@ -183,7 +145,29 @@ Settings
             });
         });
     });
+    $(document).ready(function () {
+        $('#update_google_trends').click(function () {
+            // Add your "Update All" functionality here
+            console.log('Update All button clicked');
 
+            $.ajax({
+                url: '/update_goole_trends',
+                type: 'POST',
+                contentType: 'application/json',
+                beforeSend: function () {
+                    alert('run update?');
+                },
+                success: function (response) {
+                    // Update the text element again once the request has been successfully completed
+                    alert('updated successfully');
+                },
+                error: function () {
+                    // If something went wrong, update the text element to inform the user
+                    $('#status').text('An error occurred while saving');
+                }
+            });
+        });
+    });
 </script>
 
 </body>

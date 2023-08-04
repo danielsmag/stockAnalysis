@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .table-wrapper {
+            width: 100%;
+            /* Adjust width as needed */
+            max-height: 250px;
+            /* Adjust height as needed */
+            overflow: auto;
+            /* Adds scrollbar if needed */
+        }
+
+        .table {
+            background-color: #cacaca;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table td {
+            border: 1px solid #333;
+            /* Dark border */
+            padding: 8px;
+            text-align: left;
+            color: black;
+            background-color: #cacaca;
+            /* Black text color */
+        }
+
+        .table th {
+
+            background-color: #101010;
+            /* Dark header background */
+            color: white;
+            cursor: pointer;
+            /* Changes the cursor to a hand */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h6>Filtered Table</h6>
+        <div class="form-group">
+            <label for="filter_category">Filter by category:</label>
+            <select id="filter_category" class="form-control">
+                <option value="">All</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Vegetable">Vegetable</option>
+            </select>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Name</th>
+                    <th onclick="sortTable(1)">Category</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-wrapper">
+            <table class="table">
+                <tbody id="table-body">
+                    {% for item in data %}
+                    <tr class="{{ item.category }}">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.category }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#filter_category").on('change', function () {
+                var selectedCategory = $(this).val();
+                $("#table-body tr").each(function () {
+                    if (selectedCategory == "" || $(this).hasClass(selectedCategory)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+
+        // Function to sort the table
+        function sortTable(columnIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.querySelector(".table-wrapper .table"); // target the table inside .table-wrapper
+            switching = true;
+            dir = "asc";
+
+            while (switching) {
+                switching = false;
+                rows = table.getElementsByTagName("tr");
+                for (i = 0; i < (rows.length - 1); i++) { // start the loop from 0 since there's no thead in this table
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

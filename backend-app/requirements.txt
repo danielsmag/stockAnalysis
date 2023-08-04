@@ -5,9 +5,10 @@ Flask-WTF
 Flask-Bcrypt
 Flask-RESTful
 marshmallow
-celery==5.0.5
-psycopg2-binary==2.8.6
+celery
+psycopg2-binary
 gunicorn==20.0.4
-redis==3.5.3
+redis
 pandas
 python-dotenv
+pytrends

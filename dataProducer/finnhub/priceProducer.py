@@ -86,12 +86,27 @@ class PriceProducer:
         assets: list[str] = [x.upper() for x in self.symbols]
         for asset in assets:
             self.assets_objects[asset] = Asset(ticker=asset)
-        async with websockets.connect(f"wss://ws.finnhub.io?token=cit981pr01qu27mnra5gcit981pr01qu27mnra60",timeout=15) as self.ws:
-            await self.on_open()
-            async for message in self.ws:
-                task = asyncio.create_task(self.on_message(message))
-                # await self.on_message(message)
-                await task
+
+        max_retries = 5
+        retry_seconds = 5
+
+        for i in range(max_retries):
+            try:
+                async with websockets.connect(f"wss://ws.finnhub.io?token=cit981pr01qu27mnra5gcit981pr01qu27mnra60",timeout=15) as self.ws:
+                    await self.on_open()
+                    async for message in self.ws:
+                        task = asyncio.create_task(self.on_message(message))
+                        # await self.on_message(message)
+                        await task
+                break
+            except  websockets.exceptions.ConnectionClosedError:
+                if i < max_retries - 1:  # don't wait after the last try
+                    print(f"Connection lost. Retrying in {retry_seconds} seconds...")
+                    await asyncio.sleep(retry_seconds)
+                else:
+                    print(f"Failed to connect after {max_retries} attempts. Exiting.")
+                    raise
+
     async def on_open(self):
         for asset in self.symbols:
             await self.ws.send(json.dumps({"type": "subscribe", "symbol": asset}))

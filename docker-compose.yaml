@@ -390,8 +390,11 @@ services:
       - "6000:6000"
     env_file: .env
     volumes:
+      - generalObjects:/app/generalObjects
       - ./backend-app:/app
-      - ./generalObjects:/app/generalObjects
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/2
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
 
   pgadmin:
     image: dpage/pgadmin4:6.21
@@ -406,11 +409,33 @@ services:
       - "5050:80"
     user: "5050:5050"
 
+  celery-worker:
+    build:
+      context: ./backend-app
+      dockerfile: Dockerfile
+    command: celery -A run.celery worker --loglevel=info
+    env_file: .env
+    volumes:
+      - ./backend-app:/app
+      - generalObjects:/app/generalObjects
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/2
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+      - FLASK_APP=run
+    depends_on:
+      - redis
+      - backend-app
+
 volumes:
   postgres-db-volume:
   redis-data:
   zookeeper_data:
   kafka_data:
   schema_registry_data:
-
-
+  FLASK_APP:
+  generalObjects:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./generalObjects
