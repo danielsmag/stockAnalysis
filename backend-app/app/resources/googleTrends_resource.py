@@ -5,12 +5,12 @@ from flask import Blueprint,request
 from generalObjects.conn_postgres import ConnPostgres
 from typing import List
 from pandas import read_sql_query, DataFrame
-from app.models.googleTrends_model import kwSchema,PostKwSchema
+from app.models.googleTrends_model import kwSchema,PostKwSchema,UpdateData
 from time import sleep
 from app.tasks.task import update_db
 # from app.objects.googleTtrends.google_trends_models import GoogleAnalyzes
-from app.objects.googleTrends.google_trends_models import GoogleAnalyzes
-from app.tasks.task import update_all_google_trends
+from generalObjects.googleTrends.google_trends_models import GoogleAnalyzes
+from app.tasks.task import update_all_google_trends,run_airflow_dag
 
 
 kw_schema = kwSchema()
@@ -52,9 +52,18 @@ class UpdateData(Resource):
 
     ]
 
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def post(self):
-        update_all_google_trends.delay()
+    def post(self)-> tuple:
+        reslut_dict: dict = {}
+        args: dict = UpdateData.load(request.get_json())
+        timeframe = args.get('timeframe')
+        for timef in timeframe:
+            dag_name: str = f"Google_Trends_{timef}"
+            print(f'run dag {dag_name}')
+            status:bool = run_airflow_dag(dag_id=dag_name)
+            reslut_dict[dag_name] = status
+
+        return reslut_dict, 200
 

@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields,validate
 
 
 class kwSchema(Schema):
@@ -6,4 +6,7 @@ class kwSchema(Schema):
 
 class PostKwSchema(Schema):
     kw = fields.List(fields.Str())
+
+class UpdateData(Schema):
+    timeframe = fields.List(fields.Str(validate=validate.OneOf(['past_7_days', 'past_30_days', 'past_3_month'])))
 

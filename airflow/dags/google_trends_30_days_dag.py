@@ -6,7 +6,7 @@ from typing import List,Union,Dict
 from airflow.models import Variable
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.email_operator import EmailOperator
-
+from generalObjects.googleTrends.google_trends_models import GoogleAnalyzes
 
 
 class GooogleTrendsMonthly:
@@ -24,9 +24,9 @@ class GooogleTrendsMonthly:
     ]
 
     def __init__(self, conf_dict: dict = {} ) -> None:
-
+        self._initialize_objects()
         self.conf_dict: dict = conf_dict
-        self.dag_id: str = 'Google_trrends_monthly'
+        self.dag_id: str = 'Google_Trends_past_7_days'
         self.default_args: dict = {
             'owner': 'airflow',
             'depends_on_past': False,
@@ -36,35 +36,33 @@ class GooogleTrendsMonthly:
             'retries': 1,
             'retry_delay': timedelta(minutes=5),
         }
-
-
         self.dag:DAG = self.create_dag()
 
+    def _initialize_objects(self):
+        self.GoogleAnalyzes: GoogleAnalyzes = GoogleAnalyzes()
+
     def create_dag(self)-> DAG:
-        tasks: list = []
+        tasks_30_days: list = []
 
         dag: DAG = DAG(
             dag_id=self.dag_id,
             default_args=self.default_args,
             schedule_interval=None,
-            description='update last monthly summaries',
+            description='update google trends 30 days',
             max_active_runs = 1,
             catchup=False)
 
         update_monthly: PythonOperator = PythonOperator(
             task_id='update_monthly',
-            python_callable=None,
+            python_callable=self.GoogleAnalyzes.past_30_days,
             op_args=[],
             provide_context=True,
             dag=dag
         )
-        tasks.append(update_monthly)
+        tasks_30_days.append(update_monthly)
 
-        for i in range(len(tasks) - 1):
-            tasks[i] >> tasks[i + 1]
-        # for i in range(len(tasks_gpr) - 1):
-        #     tasks_gpr[i] >> tasks_gpr[i + 1]
-
+        for i in range(len(tasks_30_days) - 1):
+            tasks_30_days[i] >> tasks_30_days[i + 1]
         return dag
 
     def get_dag(self)-> DAG:
